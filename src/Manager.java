@@ -4,7 +4,7 @@ public class Manager extends Employe {
 
     public Manager(Employe pEmploye, Secretaire pSecretaire) {
         super(pEmploye);
-        this.pSecretaire = pSecretaire;
+        this.setSecretaire(pSecretaire);
     }
 
     public static Manager createManager(Personne pPersonne, float salaire, Secretaire pSecretaire) {
@@ -18,10 +18,11 @@ public class Manager extends Employe {
 
     public void setSecretaire(Secretaire pSecretaire) {
         this.pSecretaire = pSecretaire;
+        pSecretaire.addManager(this);
     }
 
     public void augmenterLeSalaire(float pourcentageAugmentation) {
-        super.augmenterLeSalaire((float) (pourcentageAugmentation + (0.5*calculAnnuite())));
+        super.augmenterLeSalaire((float)(pourcentageAugmentation + (0.5*calculAnnuite())));
     }
 
 }
