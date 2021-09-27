@@ -3,7 +3,7 @@ import java.time.temporal.ChronoUnit;
 
 public class Employe extends Personne {
 
-    private float salaire;
+    private double salaire;
     private LocalDate dateEmbauche;
 
     protected Employe(String leNom,String lePrenom, LocalDate laDate, Adresse lAdresse, float salaire) {
@@ -30,13 +30,13 @@ public class Employe extends Personne {
         return result;
     }
 
-    public float getSalaire() {
+    public double getSalaire() {
         return salaire;
     }
 
-    public void augmenterLeSalaire(float pourcentageAugmentation) {
-        if (pourcentageAugmentation > 0) {
-            this.salaire *= ((pourcentageAugmentation / 100) + 1);
+    public void augmenterLeSalaire(double d) {
+        if (d > 0) {
+            this.salaire *= ((d / 100) + 1);
         }
     }
 

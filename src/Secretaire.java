@@ -27,9 +27,9 @@ public class Secretaire extends Employe {
         pManagers.remove(pManager);
     }
 
-    public void augmenterLeSalaire(float pourcentageAugmentation) {
-        super.augmenterLeSalaire((float)(pourcentageAugmentation + (0.1*pManagers.size())));
+    @Override
+    public void augmenterLeSalaire(double pourcentageAugmentation) {
+        super.augmenterLeSalaire(pourcentageAugmentation + (0.1*pManagers.size()));
     }
-
 
 }

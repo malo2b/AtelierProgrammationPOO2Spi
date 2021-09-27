@@ -13,7 +13,7 @@ public class Manager extends Employe {
 
     public static Manager createManager(String leNom,String lePrenom, LocalDate laDate, Adresse lAdresse, float salaire, Secretaire pSecretaire) {
         Manager new_manager = null;
-        if (Employe.verificationAgeEmploye(laDate)) {
+        if (Employe.verificationAgeEmploye(laDate) && salaire > 0) {
             new_manager = new Manager(leNom, lePrenom, laDate, lAdresse, salaire, pSecretaire);
         }
         return new_manager;
@@ -27,8 +27,9 @@ public class Manager extends Employe {
         pSecretaire.addManager(this);
     }
 
-    public void augmenterLeSalaire(float pourcentageAugmentation) {
-        super.augmenterLeSalaire((float)(pourcentageAugmentation + (0.5*calculAnnuite())));
+    @Override
+    public void augmenterLeSalaire(double pourcentageAugmentation) {
+        super.augmenterLeSalaire(pourcentageAugmentation + (0.5*calculAnnuite()));
     }
 
     public String getSecretaireName() {

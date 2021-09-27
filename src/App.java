@@ -32,5 +32,6 @@ public class App {
         System.out.println(francois.getSalaire());
         System.out.println(justine.getSalaire());
         System.out.println(malo.getSalaire());
+
     }
 }
