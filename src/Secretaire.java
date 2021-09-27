@@ -1,18 +1,18 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class Secretaire extends Employe {
 
     ArrayList<Manager> pManagers = new ArrayList<Manager>();
 
-    public Secretaire(Employe pEmploye) {
-        super((Personne)pEmploye, pEmploye.getSalaire());
+    public Secretaire(String leNom,String lePrenom, LocalDate laDate, Adresse lAdresse, float salaire) {
+        super(leNom, lePrenom, laDate, lAdresse, salaire);
     }
 
-    public static Secretaire createSecretaire(Personne pPersonne, float salaire) {
-        Employe flag = Employe.createEmploye(pPersonne, salaire);
+    public static Secretaire createSecretaire(String leNom,String lePrenom, LocalDate laDate, Adresse lAdresse, float salaire) {
         Secretaire new_secretaire = null;
-        if (flag != null) {
-            new_secretaire = new Secretaire(flag);
+        if (Employe.verificationAgeEmploye(laDate)) {
+            new_secretaire = new Secretaire(leNom, lePrenom, laDate, lAdresse, salaire);
         }
         return new_secretaire;
     }

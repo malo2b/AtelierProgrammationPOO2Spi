@@ -6,20 +6,24 @@ public class Employe extends Personne {
     private float salaire;
     private LocalDate dateEmbauche;
 
-    protected Employe(Personne pPersonne, float salaire) {
-        super(pPersonne.getNom(),pPersonne.getPrenom(),pPersonne.getDateNaissance(),pPersonne.getAdresse());
+    protected Employe(String leNom,String lePrenom, LocalDate laDate, Adresse lAdresse, float salaire) {
+        super(leNom, lePrenom, laDate, lAdresse);
         this.salaire = salaire;
         dateEmbauche = LocalDate.now();
     }
 
-    public static Employe createEmploye(Personne pPersonne, float salaire) {
-        // Verification age //
-        Employe result;
+    protected static boolean verificationAgeEmploye(LocalDate laDate) {
         LocalDate currentDate = LocalDate.now();
         LocalDate dateNaissanceMinimale = currentDate.minus(16,ChronoUnit.YEARS);
         LocalDate dateNaissanceMaximale = currentDate.minus(65,ChronoUnit.YEARS);
-        if (pPersonne.getDateNaissance().isBefore(dateNaissanceMinimale) || pPersonne.getDateNaissance().isEqual(dateNaissanceMinimale) && pPersonne.getDateNaissance().isAfter(dateNaissanceMaximale) || pPersonne.getDateNaissance().isEqual(dateNaissanceMaximale)) {
-            result = new Employe(pPersonne, salaire);
+        return laDate.isBefore(dateNaissanceMinimale) || laDate.isEqual(dateNaissanceMinimale) && laDate.isAfter(dateNaissanceMaximale) || laDate.isEqual(dateNaissanceMaximale);
+    }
+
+    public static Employe createEmploye(String leNom,String lePrenom, LocalDate laDate, Adresse lAdresse, float salaire) {
+        // Verification age //
+        Employe result;
+        if (verificationAgeEmploye(laDate)) {
+            result = new Employe(leNom, lePrenom, laDate, lAdresse, salaire);
         } else {
             result = null;
         }
