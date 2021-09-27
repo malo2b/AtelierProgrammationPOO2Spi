@@ -23,15 +23,6 @@ public class Secretaire extends Employe {
         }
     }
 
-    // public String [] getManagersNames() {
-    //     String [] res = new String[5];
-    //     int pManagersSize = pManagers.size();
-    //     for (int i = 0; i < pManagersSize; i++) {
-    //         res[i] = pManagers.get(i).getNom();
-    //     }
-    //     return res;
-    // }
-
     public void removeManager(Manager pManager) {
         pManagers.remove(pManager);
     }

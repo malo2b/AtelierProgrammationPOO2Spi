@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 
-
 public class Manager extends Employe {
 
     private Secretaire pSecretaire;

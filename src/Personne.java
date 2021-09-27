@@ -3,11 +3,14 @@ import java.time.LocalDate;
 
 public class Personne {
     private static final Adresse ADRESSE_INCONNUE = null;
+	private static final int AGE_MAJORITE = 18;
     private String nom;
     private String prenom;
     private final LocalDate dateNaissance;
     private Adresse adresse=ADRESSE_INCONNUE;
-	private static int nbrPersonnes;
+	private static int nbrPersonnes = 0;
+	private static String nomDernierePersonneCree;
+	private int ageObtentionDernierDiplome;
 	/**
 	 * Constructeur de Personne
 	 * @param leNom le nom de la personne
@@ -37,6 +40,23 @@ public class Personne {
 	 */
 	public Personne(String leNom,String lePrenom, int j, int m, int a, int numero, String rue, String code_postal, String ville){
 		this(leNom, lePrenom, LocalDate.of(a,m,j),new Adresse(numero,rue,code_postal,ville));
+		nomDernierePersonneCree = leNom;
+	}
+
+	public static String getNomDernierePersonneCree() {
+		return nomDernierePersonneCree;
+	}
+
+	public static int getAGE_MAJORITE() {
+		return AGE_MAJORITE;
+	}
+
+	public int getAgeObtentionDernierDiplome() {
+		return ageObtentionDernierDiplome;
+	}
+
+	public void setAgeObtentionDernierDiplome(int ageObtentionDernierDiplome) {
+		this.ageObtentionDernierDiplome = ageObtentionDernierDiplome;
 	}
 
 	/**
@@ -89,7 +109,10 @@ public class Personne {
 
 	@Override
 	public boolean equals(Object obj) {
-		return obj instanceof Personne && ((Personne)obj).getNom().equals(this.nom) && ((Personne)obj).getPrenom() == this.prenom  && this.dateNaissance.equals(((Personne)obj).getDateNaissance());
+		return obj instanceof Personne &&
+		((Personne)obj).getNom().equals(this.nom) &&
+		((Personne)obj).getPrenom().equals(this.prenom)  &&
+		this.dateNaissance.equals(((Personne)obj).getDateNaissance());
 	}
 
 	/* (non-Javadoc)
