@@ -109,7 +109,8 @@ public class Personne {
 
 	@Override
 	public boolean equals(Object obj) {
-		return obj instanceof Personne &&
+		return obj != null &&
+		obj instanceof Personne &&
 		((Personne)obj).getNom().equals(this.nom) &&
 		((Personne)obj).getPrenom().equals(this.prenom)  &&
 		this.dateNaissance.equals(((Personne)obj).getDateNaissance());
@@ -121,9 +122,9 @@ public class Personne {
 	public String toString(){
 		String result="\nNom : "+nom+"\n"
 		+"Prénom : "+prenom+"\n"+
-		// "Né(e) le : "+dateNaissance.get(Calendar.DAY_OF_MONTH)+
-		// "-"+dateNaissance.get(Calendar.MONTH)+
-		// "-"+dateNaissance.get(Calendar.YEAR)+"\n"+
+		"Né(e) le : "+ dateNaissance.getDayOfMonth() +
+		"-"+dateNaissance.getMonth() +
+		"-"+dateNaissance.getYear() + "\n"+
 		"Adresse : "+
 		adresse.toString();
 		return result;
