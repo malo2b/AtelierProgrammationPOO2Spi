@@ -12,12 +12,6 @@ public class Employe extends Personne {
         dateEmbauche = LocalDate.now();
     }
 
-    protected Employe(Employe pEmploye) {
-        super(pEmploye.getNom(),pEmploye.getPrenom(),pEmploye.getDateNaissance(),pEmploye.getAdresse());
-        this.salaire = pEmploye.salaire;
-        dateEmbauche = LocalDate.now();
-    }
-
     public static Employe createEmploye(Personne pPersonne, float salaire) {
         // Verification age //
         Employe result;

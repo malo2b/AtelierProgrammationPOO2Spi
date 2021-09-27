@@ -3,7 +3,7 @@ public class Manager extends Employe {
     Secretaire pSecretaire;
 
     public Manager(Employe pEmploye, Secretaire pSecretaire) {
-        super(pEmploye);
+        super((Personne)pEmploye, pEmploye.getSalaire());
         this.setSecretaire(pSecretaire);
     }
 

@@ -5,7 +5,7 @@ public class Secretaire extends Employe {
     ArrayList<Manager> pManagers = new ArrayList<Manager>();
 
     public Secretaire(Employe pEmploye) {
-        super(pEmploye);
+        super((Personne)pEmploye, pEmploye.getSalaire());
     }
 
     public static Secretaire createSecretaire(Personne pPersonne, float salaire) {
